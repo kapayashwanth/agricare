@@ -1,0 +1,35 @@
+{
+  "name": "agricare-crop-assistant",
+  "version": "1.0.0",
+  "description": "Modern responsive farming assistant for crop disease detection using Gemini Vision.",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "agriculture",
+    "crop",
+    "disease",
+    "gemini",
+    "vision",
+    "express",
+    "pdf",
+    "netlify"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@google/generative-ai": "^0.17.0",
+    "@netlify/blobs": "^6.4.0",
+    "@netlify/functions": "^2.7.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "multer": "^1.4.5-lts.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
