@@ -1,0 +1,17 @@
+{
+  "timestamp": "2025-08-11T14:13:44.863Z",
+  "imageFilename": "crop_1754921621141.jpg",
+  "disease": "Wheat Leaf Rust",
+  "medicines": [
+    "Triazole fungicides (e.g., tebuconazole, propiconazole)",
+    "Strobilurin fungicides (e.g., azoxystrobin)",
+    "DMIs (demethylation inhibitors)",
+    "QoI (quinoline outside inhibitors)"
+  ],
+  "description": "A fungal disease characterized by the appearance of orange-colored pustules (uredospores) on the leaves and stems of wheat plants. These pustules rupture, releasing spores that spread the disease. Severe infections can cause significant yield losses.",
+  "causes": [
+    "Infection by the fungal pathogen Puccinia triticina",
+    "Presence of susceptible wheat varieties",
+    "Favorable environmental conditions (moderate temperatures, high humidity, and rainfall)"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "timestamp": "2025-08-11T14:35:59.927Z",
+  "imageFilename": "crop_1754922956088.jpeg",
+  "disease": "Apple scab",
+  "medicines": [
+    "Copper-based fungicides",
+    "Strobilurin fungicides",
+    "DMI fungicides",
+    "Multi-site contact fungicides"
+  ],
+  "description": "Apple scab is a fungal disease that causes dark brown or black lesions on leaves, fruit, and stems.  Lesions can be scabby and rough in texture. Severely infected leaves may fall prematurely.",
+  "causes": [
+    "Infection by the fungus *Venturia inaequalis*",
+    "Spore dispersal by wind and rain",
+    "Cool, wet spring weather",
+    "Overwintering of the fungus on fallen leaves"
+  ]
+}
