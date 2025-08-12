@@ -21,7 +21,11 @@ const isLocalhost =
   typeof window !== "undefined" &&
   (window.location.hostname === "localhost" ||
     window.location.hostname === "127.0.0.1");
-const isNetlify = !isLocalhost; // Auto-detect: any non-localhost behaves as Netlify deploy
+const isNetlify = !isLocalhost;
+const ANALYZE_URL = isNetlify ? "/.netlify/functions/analyze" : "/api/analyze";
+const SAVE_REPORT_URL = isNetlify
+  ? "/.netlify/functions/save-report"
+  : "/api/save-report";
 
 function showToast(message, ms = 2600) {
   toast.textContent = message;
@@ -96,7 +100,7 @@ async function analyzeImage() {
     let data;
     if (isNetlify) {
       const dataUrl = await fileToDataUrl(currentFile);
-      const res = await fetch("/api/analyze", {
+      const res = await fetch(ANALYZE_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -105,13 +109,19 @@ async function analyzeImage() {
           originalName: currentFile.name,
         }),
       });
-      data = await res.json();
+      const text = await res.text();
+      // Try parse JSON, otherwise throw readable error
+      try {
+        data = JSON.parse(text);
+      } catch {
+        throw new Error(text?.slice(0, 120) || "Invalid response");
+      }
       if (!res.ok || !data.success)
         throw new Error(data.error || "Analysis failed");
     } else {
       const form = new FormData();
       form.append("image", currentFile);
-      const res = await fetch("/api/analyze", { method: "POST", body: form });
+      const res = await fetch(ANALYZE_URL, { method: "POST", body: form });
       data = await res.json();
       if (!res.ok || !data.success)
         throw new Error(data.error || "Analysis failed");
@@ -253,7 +263,7 @@ async function generateAndSavePdf() {
 
   // Save to backend (works both local and Netlify)
   try {
-    await fetch("/api/save-report", {
+    await fetch(SAVE_REPORT_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
