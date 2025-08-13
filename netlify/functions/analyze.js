@@ -55,12 +55,12 @@ export async function handler(event) {
       };
     }
 
-    const apiKey = process.env.GEMINI_API_KEY;
+    const apiKey = "AIzaSyDa_UmO8bZNlJr6AwK0YuT5RcXXSHp4byE";
     if (!apiKey) {
       return {
         statusCode: 500,
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ error: "Gemini API key not configured" }),
+        body: JSON.stringify({ error: "API key not configured" }),
       };
     }
 
