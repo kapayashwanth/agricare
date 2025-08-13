@@ -1,22 +1,40 @@
 import { createBlob } from "@netlify/blobs";
 
-export const config = { path: "/api/save-report" };
-
 export async function handler(event) {
   try {
     if (event.httpMethod !== "POST") {
-      return { statusCode: 405, body: "Method Not Allowed" };
+      return {
+        statusCode: 405,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ error: "Method Not Allowed" }),
+      };
     }
     const isBase64 = event.isBase64Encoded;
     const bodyRaw = isBase64
       ? Buffer.from(event.body, "base64").toString("utf8")
       : event.body;
-    const payload = JSON.parse(bodyRaw || "{}");
+
+    let payload;
+    try {
+      payload = JSON.parse(bodyRaw || "{}");
+    } catch (parseError) {
+      console.error("JSON parse error:", parseError);
+      console.error("Raw body:", bodyRaw?.slice(0, 200));
+      return {
+        statusCode: 400,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          error: "Invalid JSON body",
+          details: parseError.message,
+        }),
+      };
+    }
 
     const { pdfDataUrl, baseName, analysis, imageFilename } = payload;
     if (!pdfDataUrl || !pdfDataUrl.startsWith("data:application/pdf;base64,")) {
       return {
         statusCode: 400,
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ error: "Invalid or missing PDF data" }),
       };
     }

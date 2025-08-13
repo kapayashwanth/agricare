@@ -100,6 +100,7 @@ async function analyzeImage() {
     let data;
     if (isNetlify) {
       const dataUrl = await fileToDataUrl(currentFile);
+      console.log("Sending request to:", ANALYZE_URL);
       const res = await fetch(ANALYZE_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -109,13 +110,27 @@ async function analyzeImage() {
           originalName: currentFile.name,
         }),
       });
+
+      console.log("Response status:", res.status);
+      console.log(
+        "Response headers:",
+        Object.fromEntries(res.headers.entries())
+      );
+
       const text = await res.text();
+      console.log("Response text (first 200 chars):", text?.slice(0, 200));
+
       // Try parse JSON, otherwise throw readable error
       try {
         data = JSON.parse(text);
-      } catch {
-        throw new Error(text?.slice(0, 120) || "Invalid response");
+      } catch (parseError) {
+        console.error("JSON parse error:", parseError);
+        console.error("Full response text:", text);
+        throw new Error(
+          `Invalid response format: ${text?.slice(0, 120) || "Empty response"}`
+        );
       }
+
       if (!res.ok || !data.success)
         throw new Error(data.error || "Analysis failed");
     } else {
