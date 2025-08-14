@@ -192,7 +192,7 @@ async function generateAndSavePdf() {
   doc.setFont("helvetica", "bold");
   doc.setFontSize(18);
   doc.setTextColor(23, 155, 64);
-  doc.text("AgriCare Crop Disease Analysis", margin, y);
+  doc.text("Green Health Crop Disease Analysis", margin, y);
   y += 10;
   doc.setDrawColor(23, 155, 64);
   doc.setLineWidth(1);

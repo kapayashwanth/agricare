@@ -1,4 +1,4 @@
-# AgriCare – Crop Disease Assistant 🌱
+# Green Health – Crop Disease Assistant 🌱
 
 Modern, responsive web app to detect crop diseases from images using Google Gemini Vision, then generate and download a PDF report. Built with Node.js + Express and a clean, mobile-first UI.
 
@@ -109,7 +109,7 @@ If this repo is empty on GitHub, push the local project:
 git init
 git branch -M main
 git add .
-git commit -m "feat: initial AgriCare app"
+git commit -m "feat: initial Green Health app"
 git remote add origin https://github.com/kapayashwanth/agricare.git
 git push -u origin main
 ```

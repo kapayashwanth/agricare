@@ -1,91 +1,112 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AgriCare – Crop Disease Assistant</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css" />
-</head>
-<body>
-  <div class="page">
-    <header class="header">
-      <div class="brand">
-        <div class="logo">🌱</div>
-        <div class="title">
-          <h1>AgriCare</h1>
-          <p>Smart crop disease detection</p>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Green Health – Crop Disease Assistant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <div class="brand">
+          <div class="logo">🌱</div>
+          <div class="title">
+            <h1>Green Health</h1>
+            <p>Smart crop disease detection</p>
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
 
-    <main class="main">
-      <section class="upload-card">
-        <h2>Upload Crop Photo</h2>
-        <p class="hint">Drag & drop a JPG or PNG here, or use the button</p>
-        <div id="dropArea" class="drop-area" aria-label="Image drop area" tabindex="0">
-          <input id="fileInput" type="file" accept="image/png,image/jpeg,image/jpg" hidden />
-          <div class="drop-inner">
-            <div class="drop-icon">📷</div>
-            <div class="drop-text">
-              <strong>Drop image to upload</strong>
-              <span>or</span>
+      <main class="main">
+        <section class="upload-card">
+          <h2>Upload Crop Photo</h2>
+          <p class="hint">Drag & drop a JPG or PNG here, or use the button</p>
+          <div
+            id="dropArea"
+            class="drop-area"
+            aria-label="Image drop area"
+            tabindex="0"
+          >
+            <input
+              id="fileInput"
+              type="file"
+              accept="image/png,image/jpeg,image/jpg"
+              hidden
+            />
+            <div class="drop-inner">
+              <div class="drop-icon">📷</div>
+              <div class="drop-text">
+                <strong>Drop image to upload</strong>
+                <span>or</span>
+              </div>
+              <button id="chooseBtn" class="btn btn-secondary" type="button">
+                Upload Image
+              </button>
+              <p class="sub-hint">Allowed: JPG, JPEG, PNG. Max 10MB.</p>
             </div>
-            <button id="chooseBtn" class="btn btn-secondary" type="button">Upload Image</button>
-            <p class="sub-hint">Allowed: JPG, JPEG, PNG. Max 10MB.</p>
           </div>
-        </div>
 
-        <div id="previewContainer" class="preview hidden">
-          <img id="previewImage" alt="Image preview" />
-        </div>
-
-        <div class="actions">
-          <button id="analyzeBtn" class="btn btn-primary" disabled>Analyze</button>
-        </div>
-
-        <div id="loading" class="loading hidden">
-          <div class="spinner"></div>
-          <span>Analyzing image…</span>
-        </div>
-      </section>
-
-      <section id="resultsCard" class="results-card hidden">
-        <div class="results-header">
-          <h2>Analysis Results</h2>
-          <button id="downloadBtn" class="btn btn-outline hidden">Download Analysis</button>
-        </div>
-        <div class="results-grid">
-          <div class="result-box">
-            <h3>Disease Name</h3>
-            <p id="diseaseText" class="value"></p>
+          <div id="previewContainer" class="preview hidden">
+            <img id="previewImage" alt="Image preview" />
           </div>
-          <div class="result-box">
-            <h3>Required Medicines / Treatments</h3>
-            <ul id="medicinesList" class="list"></ul>
-          </div>
-          <div class="result-box">
-            <h3>Description</h3>
-            <p id="descriptionText" class="value"></p>
-          </div>
-          <div class="result-box">
-            <h3>Possible Causes</h3>
-            <ul id="causesList" class="list"></ul>
-          </div>
-        </div>
-      </section>
-    </main>
 
-    <footer class="footer">
-      <p>© <span id="year"></span> AgriCare. Built for modern agriculture.</p>
-    </footer>
-  </div>
+          <div class="actions">
+            <button id="analyzeBtn" class="btn btn-primary" disabled>
+              Analyze
+            </button>
+          </div>
 
-  <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+          <div id="loading" class="loading hidden">
+            <div class="spinner"></div>
+            <span>Analyzing image…</span>
+          </div>
+        </section>
 
-  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
-  <script src="/script.js" type="module"></script>
-</body>
+        <section id="resultsCard" class="results-card hidden">
+          <div class="results-header">
+            <h2>Analysis Results</h2>
+            <button id="downloadBtn" class="btn btn-outline hidden">
+              Download Analysis
+            </button>
+          </div>
+          <div class="results-grid">
+            <div class="result-box">
+              <h3>Disease Name</h3>
+              <p id="diseaseText" class="value"></p>
+            </div>
+            <div class="result-box">
+              <h3>Required Medicines / Treatments</h3>
+              <ul id="medicinesList" class="list"></ul>
+            </div>
+            <div class="result-box">
+              <h3>Description</h3>
+              <p id="descriptionText" class="value"></p>
+            </div>
+            <div class="result-box">
+              <h3>Possible Causes</h3>
+              <ul id="causesList" class="list"></ul>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <p>
+          © <span id="year"></span> Green Health. Built for modern agriculture.
+        </p>
+      </footer>
+    </div>
+
+    <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+    <script src="/script.js" type="module"></script>
+  </body>
 </html>

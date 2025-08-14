@@ -1,5 +1,5 @@
 {
-  "name": "agricare-crop-assistant",
+  "name": "green-health-crop-assistant",
   "version": "1.0.0",
   "description": "Modern responsive farming assistant for crop disease detection using Gemini Vision.",
   "type": "module",
