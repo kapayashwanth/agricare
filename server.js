@@ -69,7 +69,7 @@ async function analyzeWithGemini(imagePath, mimeType) {
       "Gemini API key not configured. Set GEMINI_API_KEY in .env"
     );
 
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+  const model = genAI.getGenerativeModel({ model: "gemini-pro" });
   const imageBuffer = fs.readFileSync(imagePath);
   const base64 = imageBuffer.toString("base64");
 
