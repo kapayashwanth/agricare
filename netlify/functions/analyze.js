@@ -67,7 +67,7 @@ export async function handler(event) {
     const base64 = imageDataUrl.replace(/^data:[^;]+;base64,/, "");
 
     const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
     const prompt = buildPrompt();
     const result = await model.generateContent([
